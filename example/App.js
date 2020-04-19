@@ -9,7 +9,7 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import VibesPush from 'react-native-vibes-push';
 
 export default class App extends Component<{}> {
@@ -18,12 +18,7 @@ export default class App extends Component<{}> {
     message: '--'
   };
   componentDidMount() {
-    VibesPush.sampleMethod('Testing', 123, (message) => {
-      this.setState({
-        status: 'native callback received',
-        message
-      });
-    });
+   
   }
   render() {
     return (
@@ -32,6 +27,10 @@ export default class App extends Component<{}> {
         <Text style={styles.instructions}>STATUS: {this.state.status}</Text>
         <Text style={styles.welcome}>☆NATIVE CALLBACK MESSAGE☆</Text>
         <Text style={styles.instructions}>{this.state.message}</Text>
+        <Button
+          onPress={() => VibesPush.test()}
+          title="test VibesSDK"
+        />
       </View>
     );
   }
